@@ -1,5 +1,5 @@
 //============================================================================
-// Name        : Bier.cpp
+// Name        : main.cpp
 // Author      : 
 // Version     :
 // Copyright   : Your copyright notice
@@ -7,9 +7,12 @@
 //============================================================================
 
 #include <iostream>
-using namespace std;
+#include "input.h"
+#include <fstream>
 
-int main() {
-	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+int main(int argc, char **argv) {
+	std::ifstream input(argv[1]);
+
+	std::cout << input.get() << std::endl;
 	return 0;
 }

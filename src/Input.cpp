@@ -7,7 +7,8 @@
 
 #include "Input.h"
 
-Input::Input()
+Input::Input(const std::string& aFilename) :
+		filename(aFilename)
 {
 	// TODO Auto-generated constructor stub
 
@@ -18,3 +19,7 @@ Input::~Input()
 	// TODO Auto-generated destructor stub
 }
 
+const std::string& Input::getFilename() const
+{
+	return filename;
+}
