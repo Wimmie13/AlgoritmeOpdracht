@@ -8,15 +8,12 @@
 #ifndef TASK_H_
 #define TASK_H_
 
-#include "Machine.h"
-
 class Task
 {
 public:
-	Task(Machine& aMachine, unsigned short aTijdsduur);
+	Task(unsigned short aTijdsduur);
 	virtual ~Task();
 private:
-	Machine& machine;
 	unsigned short tijdsduur;
 };
 

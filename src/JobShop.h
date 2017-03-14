@@ -14,10 +14,14 @@
 class JobShop
 {
 public:
-	JobShop();
+	typedef int type_jobshop;
+	JobShop(type_jobshop anAmountOfMachines);
+	void addJob(type_jobshop id);
 	virtual ~JobShop();
+	const std::vector<Job>& getJobList() const;
 private:
 	std::vector<Job> JobList;
+	type_jobshop amountOfMachines;
 };
 
 #endif /* JOBSHOP_H_ */

@@ -9,15 +9,19 @@
 #define INPUT_H_
 
 #include <fstream>
+#include "JobShop.h"
 
 class Input
 {
 public:
-	Input(const std::string& aFilename);
+	typedef int type_input;
+	Input(const std::string& filename);
 	virtual ~Input();
-	const std::string& getFilename() const;
+	void generateJobs(JobShop& jobShop);
+	const type_input getAmountOfMachines();
+	const type_input getAmountOfJobs();
 private:
-	std::string filename;
+	std::vector<std::vector<type_input>> lines;
 };
 
 #endif /* INPUT_H_ */

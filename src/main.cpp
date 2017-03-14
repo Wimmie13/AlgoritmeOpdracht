@@ -8,11 +8,23 @@
 
 #include <iostream>
 #include "input.h"
-#include <fstream>
+#include "JobShop.h"
 
-int main(int argc, char **argv) {
-	std::ifstream input(argv[1]);
+int main(int argc, char **argv)
+{
+	Input input(argv[1]);
+	JobShop jobShop(input.getAmountOfMachines());
+	input.generateJobs(jobShop);
 
-	std::cout << input.get() << std::endl;
+
+
+//	for (unsigned int i = 0; i < test.size(); i++)
+//	{
+//		for (unsigned int j = 0; j < test.at(i).size(); j++)
+//		{
+//			std::cout << test.at(i).at(j) << " ";
+//		}
+//		std::cout << std::endl;
+//	}
 	return 0;
 }

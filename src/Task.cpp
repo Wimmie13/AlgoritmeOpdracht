@@ -7,8 +7,8 @@
 
 #include "Task.h"
 
-Task::Task(Machine& aMachine, unsigned short aTijdsduur):
-machine(aMachine), tijdsduur(aTijdsduur)
+Task::Task(unsigned short aTijdsduur):
+tijdsduur(aTijdsduur)
 {
 	// TODO Auto-generated constructor stub
 

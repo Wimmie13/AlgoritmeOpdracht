@@ -7,9 +7,9 @@
 
 #include "JobShop.h"
 
-JobShop::JobShop()
+JobShop::JobShop(type_jobshop anAmountOfMachines) :
+		amountOfMachines(anAmountOfMachines)
 {
-	// TODO Auto-generated constructor stub
 
 }
 
@@ -18,3 +18,12 @@ JobShop::~JobShop()
 	// TODO Auto-generated destructor stub
 }
 
+void JobShop::addJob(type_jobshop id)
+{
+	JobList.push_back(Job(id));
+}
+
+const std::vector<Job>& JobShop::getJobList() const
+{
+	return JobList;
+}
