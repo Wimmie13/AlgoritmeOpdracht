@@ -6,7 +6,6 @@
  */
 
 #include "JobShop.h"
-#include <unordered_map>
 
 JobShop::JobShop(type_jobshop anAmountOfMachines) :
 		amountOfMachines(anAmountOfMachines)
