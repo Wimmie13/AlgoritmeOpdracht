@@ -6,11 +6,17 @@
  */
 
 #include "Job.h"
+#include <iostream>
 
-Job::Job(unsigned short anId) :
-		id(anId)
+Job::Job(type_job anId, std::vector<Task> anTaskList) :
+		id(anId), taskList(anTaskList)
 {
 	// TODO Auto-generated constructor stub
+	std::cout << "Job met ID: " << id << std::endl;
+	for(int i = 0; i != taskList.size(); i++)
+	{
+		taskList.at(i).printData();
+	}
 
 }
 

@@ -11,10 +11,16 @@
 class Task
 {
 public:
-	Task(unsigned short aTijdsduur);
+	typedef int type_task;
+	typedef unsigned short type_machine;
+	Task(type_task anId, type_machine aMachine, type_task aTijdsduur);
 	virtual ~Task();
+	void printData();
 private:
-	unsigned short tijdsduur;
+	type_task id;
+	type_machine machine;
+	type_task tijdsduur;
+	bool finished;
 };
 
 #endif /* TASK_H_ */

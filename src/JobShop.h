@@ -16,9 +16,11 @@ class JobShop
 public:
 	typedef int type_jobshop;
 	JobShop(type_jobshop anAmountOfMachines);
-	void addJob(type_jobshop id);
+	void addJob(type_jobshop id, std::vector<Task> taskList);
 	virtual ~JobShop();
 	const std::vector<Job>& getJobList() const;
+	int getAmountOfMachines() const;
+
 private:
 	std::vector<Job> JobList;
 	type_jobshop amountOfMachines;

@@ -14,11 +14,12 @@
 class Job
 {
 public:
-	Job(unsigned short anId);
+	typedef int type_job;
+	Job(type_job anId, std::vector<Task> anTaskList);
 	virtual ~Job();
 private:
-	std::vector<Task> TaskList;
-	unsigned short id;
+	type_job id;
+	std::vector<Task> taskList;
 };
 
 #endif /* JOB_H_ */
