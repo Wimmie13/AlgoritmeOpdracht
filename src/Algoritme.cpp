@@ -102,9 +102,9 @@ void Algoritme::generateResults()
 		if (taskList.empty())
 		{
 			//remove the Job
-			JobList.erase(JobList.begin()+job.getId());
+			//JobList.erase(JobList.begin()+job.getId());
 			//update jobsRemaining
-			jobsRemaining = JobList.size();
+			jobsRemaining--;
 		}
 	}
 
