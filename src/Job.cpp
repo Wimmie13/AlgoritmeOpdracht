@@ -9,11 +9,11 @@
 #include <iostream>
 
 Job::Job(type_job anId, std::vector<Task> anTaskList) :
-		id(anId), taskList(anTaskList)
+		id(anId), starttime(-1), endtime(0), taskList(anTaskList)
 {
 	// TODO Auto-generated constructor stub
 	std::cout << "Job met ID: " << id << std::endl;
-	for(int i = 0; i != taskList.size(); i++)
+	for (int i = 0; i != taskList.size(); i++)
 	{
 		taskList.at(i).printData();
 	}
@@ -25,6 +25,28 @@ Job::~Job()
 	// TODO Auto-generated destructor stub
 }
 
-std::vector<Task> Job::getTaskList() {
+std::vector<Task>& Job::getTaskList()
+{
 	return taskList;
 }
+
+Job::type_job Job::getEndtime() const
+{
+	return endtime;
+}
+
+void Job::setEndtime(type_job endtime)
+{
+	this->endtime = endtime;
+}
+
+Job::type_job Job::getStarttime() const
+{
+	return starttime;
+}
+
+void Job::setStarttime(type_job starttime)
+{
+	this->starttime = starttime;
+}
+

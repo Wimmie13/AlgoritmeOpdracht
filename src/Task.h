@@ -13,13 +13,14 @@ class Task
 public:
 	typedef int type_task;
 	typedef unsigned short type_machine;
-	Task(type_task anId, type_machine aMachine, type_task aTijdsduur);
+	Task(type_task anId, type_machine aMachineId, type_task aTijdsduur);
 	virtual ~Task();
 	void printData();
-	int getTijdsduur();
+	type_machine getTijdsduur();
+	type_machine getMachineId() const;
 private:
 	type_task id;
-	type_machine machine;
+	type_machine machineId;
 	type_task tijdsduur;
 	bool finished;
 };

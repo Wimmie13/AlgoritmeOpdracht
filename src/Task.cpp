@@ -8,8 +8,8 @@
 #include "Task.h"
 #include <iostream>
 
-Task::Task(type_task anId, type_machine aMachine, type_task aTijdsduur) :
-		id(anId), machine(aMachine), tijdsduur(aTijdsduur), finished(false)
+Task::Task(type_task anId, type_machine aMachineId, type_task aTijdsduur) :
+		id(anId), machineId(aMachineId), tijdsduur(aTijdsduur), finished(false)
 {
 	// TODO Auto-generated constructor stub
 }
@@ -21,10 +21,16 @@ Task::~Task()
 
 void Task::printData()
 {
-	std::cout << "Task ID: " << id << " Machine: " << machine << " duur: "
+	std::cout << "Task ID: " << id << " Machine: " << machineId << " duur: "
 			<< tijdsduur << std::endl;
 }
 
-int Task::getTijdsduur() {
+Task::type_machine Task::getTijdsduur()
+{
 	return tijdsduur;
+}
+
+Task::type_machine Task::getMachineId() const
+{
+	return machineId;
 }

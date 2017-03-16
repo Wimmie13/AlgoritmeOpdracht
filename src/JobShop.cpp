@@ -28,7 +28,7 @@ const std::vector<Job>& JobShop::getJobList() const
 	return JobList;
 }
 
-int JobShop::getAmountOfMachines() const
+JobShop::type_jobshop JobShop::getAmountOfMachines() const
 {
 	return amountOfMachines;
 }

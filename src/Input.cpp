@@ -16,7 +16,17 @@
 
 Input::Input(const std::string& filename)
 {
-	std::ifstream input(filename);
+	std::string testfile = "testFile.test";
+	std::string test = "6 6\n"
+			"2 1 0 3 1 6 3 7 5 3 4 6\n"
+			"1 8 2 5 4 10 5 10 0 10 3 4\n"
+			"2 5 3 4 5 8 0 9 1 1 4 7\n"
+			"1 5 0 5 2 5 3 3 4 8 5 9\n"
+			"2 9 1 3 4 5 5 4 0 3 3 1\n"
+			"1 3 3 3 5 9 0 10 4 4 2 1";
+	std::ofstream(testfile, std::ios::binary) << test;
+
+	std::ifstream input(testfile);
 	std::string line;
 	std::regex line_regex("[0-9]+");
 
@@ -44,15 +54,6 @@ Input::Input(const std::string& filename)
 			jobs.push_back(newTaskList);
 		}
 	}
-
-//	for (int i = 0; i < getAmountOfJobs(); i++)
-//	{
-//		for (int j = 0; j < jobs.at(i).size(); j++)
-//		{
-//			std::cout << jobs.at(i).at(j) << " ";
-//		}
-//		std::cout << std::endl;
-//	}
 }
 
 Input::~Input()

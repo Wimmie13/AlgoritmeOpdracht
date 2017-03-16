@@ -19,8 +19,7 @@ public:
 	void addJob(type_jobshop id, std::vector<Task> taskList);
 	virtual ~JobShop();
 	const std::vector<Job>& getJobList() const;
-	int getAmountOfMachines() const;
-
+	type_jobshop getAmountOfMachines() const;
 private:
 	std::vector<Job> JobList;
 	type_jobshop amountOfMachines;

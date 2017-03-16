@@ -9,16 +9,18 @@
 #define ALGORITME_H_
 
 #include <vector>
-#include "job.h"
+#include "JobShop.h"
 
 class Algoritme
 {
 public:
-	Algoritme();
+	Algoritme(JobShop& aJobShop);
 	virtual ~Algoritme();
-	int calculateCriticalPath(std::vector<Job> JobList);
-	Task& calculateLeastSlack(std::vector<Job> JobList, int criticalPath);
-	int criticalPath;
+	int calculateCriticalPath(std::vector<Job>&JobList);
+	int calculateLeastSlack(std::vector<Job> JobList);
+	void generateResults();
+private:
+	JobShop jobShop;
 };
 
 #endif /* ALGORITME_H_ */
