@@ -10,6 +10,7 @@
 
 #include <vector>
 #include "Job.h"
+#include "Machine.h"
 
 class JobShop
 {
@@ -19,9 +20,11 @@ public:
 	void addJob(type_jobshop id, std::vector<Task> taskList);
 	virtual ~JobShop();
 	const std::vector<Job>& getJobList() const;
+	const std::vector<Machine>& getMachineList() const;
 	type_jobshop getAmountOfMachines() const;
 private:
 	std::vector<Job> JobList;
+	std::vector<Machine> MachineList;
 	type_jobshop amountOfMachines;
 };
 

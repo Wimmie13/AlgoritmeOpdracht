@@ -47,20 +47,19 @@ int Algoritme::calculateLeastSlack(std::vector<Job> JobList)
 	int criticalPath = calculateCriticalPath(JobList);
 	int leastSlack = criticalPath;
 
-	for (int i = JobList.size() - 1; i >= 0; i--)
+	for (int i = JobList.size()-1 ; i >= 0; --i)
 	{
-		auto taskList = JobList.at(i).getTaskList();
-		int leastSlackJob = criticalPath;
+	auto taskList = JobList.at(i).getTaskList();
+	int leastSlackJob = criticalPath;
+	for (int j = taskList.size()-1 ; j >= 0; --j)
+	{
+		leastSlackJob -= taskList.at(j).getTijdsduur();
+	}
 
-		for (int j = taskList.size() - 1; j >= 0; j--)
-		{
-			leastSlackJob -= taskList.at(j).getTijdsduur();
-		}
-
-		if (leastSlackJob <= leastSlack)
-		{
-			leastSlack = leastSlackJob;
-			jobId = i;
+	if (leastSlackJob <= leastSlack)
+	{
+		leastSlack = leastSlackJob;
+		jobId = i;
 		}
 	}
 	return jobId;
@@ -69,34 +68,52 @@ int Algoritme::calculateLeastSlack(std::vector<Job> JobList)
 void Algoritme::generateResults()
 {
 	std::vector<Job> JobList = jobShop.getJobList();
-	int currentTime = 0, jobsRemaining = JobList.size();
+	std::vector<Machine> MachineList = jobShop.getMachineList();
+	int jobsRemaining = JobList.size();
 
+	//while there are still tasks remaining to be scheduled
 	while (jobsRemaining != 0)
 	{
 		auto& job = JobList.at(calculateLeastSlack(JobList));
+		auto& taskList = job.getTaskList();
 
+		//if this is the first task to be scheduled for this job
 		if (job.getStarttime() == -1)
 		{
-			job.setStarttime(currentTime);
+			//set startTime for the job
+			job.setStarttime(MachineList.at(taskList.at(0).getMachineId()).getEndTime());
+			//set endTime for the machine
+			MachineList.at(taskList.at(0).getMachineId()).setEndTime(taskList.at(0).getTijdsduur());
+			//set endTime for the job
+			job.setEndTime(MachineList.at(taskList.at(0).getMachineId()).getEndTime());
+		}
+		//if this is not the first task to be scheduled for this job
+		else {
+			//update the endTime for the machine
+			MachineList.at(taskList.at(0).getMachineId()).updateEndTime(taskList.at(0).getTijdsduur());
+			//update the endTime for the job
+			job.updateEndTime(MachineList.at(taskList.at(0).getMachineId()).getEndTime());
 		}
 
-		// Set the tasklist of the job with the least slack, add the time and erase.
-		auto& taskList = job.getTaskList();
-		currentTime += taskList.at(0).getTijdsduur();
-
-		if (taskList.size() == 1)
-		{
-			job.setEndtime(currentTime);
-			jobsRemaining--;
-		}
-
+		//remove the Task to prevent double scheduling
 		taskList.erase(taskList.begin());
+
+		//if the Job has no tasks remaining
+		if (taskList.empty())
+		{
+			//remove the Job
+			JobList.erase(JobList.begin()+job.getId());
+			//update jobsRemaining
+			jobsRemaining = JobList.size();
+		}
 	}
 
-	// Should be inserted into file!
-	for (unsigned int i = 0; i < JobList.size(); i++)
+	if (jobsRemaining == 0)
 	{
-		std::cout << i << " " << JobList.at(i).getStarttime() << " "
-				<< JobList.at(i).getEndtime() << std::endl;
+		// Should be inserted into file!
+		for (unsigned int i = 0; i < JobList.size(); i++)
+		{
+			std::cout << i << " " << JobList.at(i).getStarttime() << " " << JobList.at(i).getEndtime() << std::endl;
+		}
 	}
 }

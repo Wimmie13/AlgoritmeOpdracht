@@ -35,7 +35,7 @@ Job::type_job Job::getEndtime() const
 	return endtime;
 }
 
-void Job::setEndtime(type_job endtime)
+void Job::setEndTime(int endtime)
 {
 	this->endtime = endtime;
 }
@@ -50,3 +50,10 @@ void Job::setStarttime(type_job starttime)
 	this->starttime = starttime;
 }
 
+void Job::updateEndTime(int time) {
+	this->endtime += time;
+}
+
+Job::type_job Job::getId() {
+	return id;
+}

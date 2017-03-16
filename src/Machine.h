@@ -12,12 +12,14 @@ class Machine
 {
 public:
 	typedef int type_machine;
-	Machine();
+	Machine(int id);
 	virtual ~Machine();
-	type_machine getTime() const;
-	void setTime(type_machine time);
+	int getEndTime() const;
+	void setEndTime(int time);
+	void updateEndTime(int time);
 private:
-	type_machine time;
+	int endTime;
+	type_machine id;
 };
 
 #endif /* MACHINE_H_ */

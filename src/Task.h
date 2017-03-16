@@ -17,12 +17,12 @@ public:
 	virtual ~Task();
 	void printData();
 	type_machine getTijdsduur();
-	type_machine getMachineId() const;
+	int getMachineId() const;
 private:
 	type_task id;
 	type_machine machineId;
 	type_task tijdsduur;
-	bool finished;
+	//bool finished;
 };
 
 #endif /* TASK_H_ */

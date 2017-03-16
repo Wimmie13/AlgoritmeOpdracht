@@ -9,7 +9,7 @@
 #include <iostream>
 
 Task::Task(type_task anId, type_machine aMachineId, type_task aTijdsduur) :
-		id(anId), machineId(aMachineId), tijdsduur(aTijdsduur), finished(false)
+		id(anId), machineId(aMachineId), tijdsduur(aTijdsduur)
 {
 	// TODO Auto-generated constructor stub
 }
@@ -30,7 +30,7 @@ Task::type_machine Task::getTijdsduur()
 	return tijdsduur;
 }
 
-Task::type_machine Task::getMachineId() const
+int Task::getMachineId() const
 {
 	return machineId;
 }

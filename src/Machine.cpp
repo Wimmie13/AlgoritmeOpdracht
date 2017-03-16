@@ -7,8 +7,8 @@
 
 #include "Machine.h"
 
-Machine::Machine() :
-		time(0)
+Machine::Machine(int anId) :
+		endTime(0), id(anId)
 {
 	// TODO Auto-generated constructor stub
 
@@ -19,13 +19,16 @@ Machine::~Machine()
 	// TODO Auto-generated destructor stub
 }
 
-Machine::type_machine Machine::getTime() const
+int Machine::getEndTime() const
 {
-	return time;
+	return endTime;
 }
 
-void Machine::setTime(type_machine time)
+void Machine::setEndTime(int time)
 {
-	this->time = time;
+	this->endTime = time;
 }
 
+void Machine::updateEndTime(int time) {
+	this->endTime += time;
+}

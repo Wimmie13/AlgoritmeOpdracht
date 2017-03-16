@@ -19,9 +19,11 @@ public:
 	virtual ~Job();
 	std::vector<Task>& getTaskList();
 	type_job getEndtime() const;
-	void setEndtime(type_job endtime);
+	void setEndTime(int endtime);
+	void updateEndTime(int time);
 	type_job getStarttime() const;
 	void setStarttime(type_job starttime);
+	type_job getId();
 private:
 	type_job id, starttime, endtime;
 	std::vector<Task> taskList;
