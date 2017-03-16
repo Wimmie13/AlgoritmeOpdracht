@@ -25,3 +25,6 @@ Job::~Job()
 	// TODO Auto-generated destructor stub
 }
 
+std::vector<Task> Job::getTaskList() {
+	return taskList;
+}

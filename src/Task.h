@@ -16,6 +16,7 @@ public:
 	Task(type_task anId, type_machine aMachine, type_task aTijdsduur);
 	virtual ~Task();
 	void printData();
+	int getTijdsduur();
 private:
 	type_task id;
 	type_machine machine;

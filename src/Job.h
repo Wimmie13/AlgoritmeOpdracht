@@ -17,6 +17,7 @@ public:
 	typedef int type_job;
 	Job(type_job anId, std::vector<Task> anTaskList);
 	virtual ~Job();
+	std::vector<Task> getTaskList();
 private:
 	type_job id;
 	std::vector<Task> taskList;

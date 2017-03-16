@@ -25,3 +25,6 @@ void Task::printData()
 			<< tijdsduur << std::endl;
 }
 
+int Task::getTijdsduur() {
+	return tijdsduur;
+}
