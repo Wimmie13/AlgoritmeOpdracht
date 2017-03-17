@@ -82,17 +82,28 @@ void Algoritme::generateResults()
 		{
 			//set startTime for the job
 			job.setStarttime(MachineList.at(taskList.at(0).getMachineId()).getEndTime());
+			job.updateEndTime(MachineList.at(taskList.at(0).getMachineId()).getEndTime());
 			//set endTime for the machine
 			MachineList.at(taskList.at(0).getMachineId()).setEndTime(taskList.at(0).getTijdsduur());
 			//set endTime for the job
-			job.setEndTime(MachineList.at(taskList.at(0).getMachineId()).getEndTime());
+			job.updateEndTime(MachineList.at(taskList.at(0).getMachineId()).getEndTime());
+			//std::cout << "j.setEndTime: " << MachineList.at(taskList.at(0).getMachineId()).getEndTime() << std::endl;
 		}
 		//if this is not the first task to be scheduled for this job
 		else {
-			//update the endTime for the machine
-			MachineList.at(taskList.at(0).getMachineId()).updateEndTime(taskList.at(0).getTijdsduur());
-			//update the endTime for the job
-			job.updateEndTime(MachineList.at(taskList.at(0).getMachineId()).getEndTime());
+//			//update the endTime for the machine
+//			MachineList.at(taskList.at(0).getMachineId()).updateEndTime(taskList.at(0).getTijdsduur());
+//			std::cout << "m.updateEndTime: " << taskList.at(0).getTijdsduur() << std::endl;
+//			std::cout << taskList.at(0).getMachineId() << MachineList.at(taskList.at(0).getMachineId()).getEndTime() << std::endl;
+//			//update the endTime for the job
+//			job.updateEndTime(MachineList.at(taskList.at(0).getMachineId()).getEndTime());
+//			//std::cout << "j.updateEndTime: " << MachineList.at(taskList.at(0).getMachineId()).getEndTime() << std::endl;
+		auto machine = MachineList.at(taskList.at(0).getMachineId());
+		machine.updateEndTime(job.getEndtime() - machine.getEndTime());
+		machine.updateEndTime(taskList.at(0).getTijdsduur());
+		job.updateEndTime(machine.getEndTime());
+
+
 		}
 
 		//remove the Task to prevent double scheduling

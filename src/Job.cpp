@@ -51,7 +51,11 @@ void Job::setStarttime(type_job starttime)
 }
 
 void Job::updateEndTime(int time) {
+	if (id == 0)
+	std::cout << "Starttime: " << starttime << " Endtime: " << endtime << " Endtime + " << time << std::endl;
 	this->endtime += time;
+	if (id == 0)
+	std::cout << endtime << std::endl;
 }
 
 Job::type_job Job::getId() {

@@ -24,9 +24,9 @@ Input::Input(const std::string& filename)
 			"1 5 0 5 2 5 3 3 4 8 5 9\n"
 			"2 9 1 3 4 5 5 4 0 3 3 1\n"
 			"1 3 3 3 5 9 0 10 4 4 2 1";
-	test = "2 3\n"
-			"0 30 1 30 2 10\n"
-			"0 60 1 15 2 10";
+//	test = "2 3\n"
+//			"1 30 0 30 2 10\n"
+//			"0 60 1 15 2 10";
 	std::ofstream(testfile, std::ios::binary) << test;
 
 	std::ifstream input(testfile);
