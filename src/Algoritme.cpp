@@ -99,7 +99,6 @@ void Algoritme::generateResults()
 //			job.updateEndTime(MachineList.at(taskList.at(0).getMachineId()).getEndTime());
 //			//std::cout << "j.updateEndTime: " << MachineList.at(taskList.at(0).getMachineId()).getEndTime() << std::endl;
 		auto machine = MachineList.at(taskList.at(0).getMachineId());
-		machine.updateEndTime(job.getEndtime() - machine.getEndTime());
 		machine.updateEndTime(taskList.at(0).getTijdsduur());
 		job.updateEndTime(machine.getEndTime());
 
